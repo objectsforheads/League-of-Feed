@@ -1,0 +1,90 @@
+<template name="homepage">
+  <div class="screen--intro">
+    <div class="intro__content">
+      <h1 class="site-title">League of<br><span class="jumbo">Feed</span></h1>
+      <p class="byline">
+        Champion recommender and intrepid data explorer.
+        <br>
+        Named in the spirit of every salty Silver I player's <a href=".">infinite optimism</a>.
+      </p>
+      <form id="intro__find-summoner" class="intro__find-summoner active">
+        {{#if isError}}
+        <div class="error-status"><p>{{isError}}</p></div>
+        {{/if}}
+        <div class="input-field input__name">
+          <input type="text" class="empty" id="find-summoner__summoner-name">
+          <label for="find-summoner__summoner-name">
+            Find Summoner
+          </label>
+        </div>
+        <span>in</span>
+        <div class="input-field input__server">
+          <input type="text" id="find-summoner__summoner-server" value="NA">
+          <label for="find-summoner__summoner-server">Server</label>
+        </div>
+        <div class="input-field input__submit">
+          <button type="submit">
+            Search
+          </button>
+        </div>
+        <div class="server-selections">
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--NA" value="NA" checked>
+            <label class="server-selection" for="server--NA">NA</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--BR" value="BR">
+            <label class="server-selection" for="server--BR">BR</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--EUNE" value="EUNE">
+            <label class="server-selection" for="server--EUNE">EUNE</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--EUW" value="EUW">
+            <label class="server-selection" for="server--EUW">EUW</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--JP" value="JP">
+            <label class="server-selection" for="server--JP">JP</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--KR" value="KR">
+            <label class="server-selection" for="server--KR">KR</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--LAN" value="LAN">
+            <label class="server-selection" for="server--LAN">LAN</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--LAS" value="LAS">
+            <label class="server-selection" for="server--LAS">LAS</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--OCE" value="OCE">
+            <label class="server-selection" for="server--OCE">OCE</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--RU" value="RU">
+            <label class="server-selection" for="server--RU">RU</label>
+          </div>
+          <div class="server-selection">
+            <input type="radio" name="server" id="server--TR" value="TR">
+          <label class="server-selection" for="server--TR">TR</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="screen--loading-summoner">
+    <div class="screen__content">
+      <h2>finding summoner</h2>
+      <div class="loading-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+  </div>
+</template>

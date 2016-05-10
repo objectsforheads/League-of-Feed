@@ -1,0 +1,109 @@
+<template name="summonerSummary">
+  {{#if Template.subscriptionsReady}}
+    {{#if summoner}}
+      {{#with summoner}}
+        <div class="summoner-brief">
+          <h1>{{riotName}}</h1>
+          <p> mastered <strong>{{championsMastered}}</strong> champions | mastering <strong>{{championsInProgressMastery}}</strong> champions | hasn't played <strong>{{championsNoPoints}}</strong> champions</p>
+        </div>
+        <div class="at-a-glance active">
+          {{#if scopeIsRoles}}
+          <p><strong>{{riotName}}</strong> has earned a total of <strong>{{totalMasteryHumanLegible}} mastery points</strong>, most of which were earned with <strong>{{mostPlayedRole}}</strong> champions.</p>
+          <p>{{#if championFit}}Unsurprisingly{{else}}However{{/if}}, the most points came from playing <strong>{{mostPlayedChampion}}</strong>, a champion classified under {{#each mostMasteredRoles}}<span class="champion__tag"><strong>{{this}}</strong></span>{{/each}}. So far, <strong>{{riotName}}</strong> has earned <strong>{{maxMasteryHumanLegible}} points</strong> by playing <strong>{{mostPlayedChampion}}</strong>.</p>
+          {{/if}}
+          {{#if scopeIsChampions}}
+          <p>information about your role here</p>
+          {{/if}}
+          {{#if scopeIsChampion}}
+          <p>information about your champion here</p>
+          {{/if}}
+          <p>Based on your mastery point breakdown, we recommend trying out {{recommendedChampion}}.</p>
+        </div>
+        <div class="toggle-at-a-glance">toggle</div>
+        <div class="block-group">
+          <div class="block chart__wrapper">
+            <div class="roles-breakdown">
+              <div class="ct-chart ct-square"></div>
+              <div class="roles-segment-toggle">
+              </div>
+              <div class="rbd-label">
+                {{#if scopeIsRoles}}
+                <h2>
+                  {{totalMasteryHumanLegible}}<br><span class="subheading">total mastery points</span>
+                </h2>
+                {{/if}}
+                {{#if scopeIsChampions}}
+                <h2>
+                  1,337<br><span class="subheading">role mastery points</span>
+                </h2>
+                {{/if}}
+                {{#if scopeIsChampion}}
+                <h2>
+                  9,001<br><span class="subheading">champion mastery points</span>
+                </h2>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-scope-options">
+          {{#unless scopeIsRoles}}
+          <button class="return-to-roles">View Roles</button>
+          {{/unless}}
+          {{#if scopeIsChampion}}
+            <button class="return-to-champions">View {{currentRoleBreakdown}}s</button>
+          {{/if}}
+        </div>
+        <div class="chart__legend active">
+        </div>
+        <button class="toggle-legend">Toggle Legend</button>
+        {{maxMastery}}
+        {{playedChampionRoles}}
+        {{incrementTotalMasteryHumanLegible}}
+      {{/with}}
+    {{else}}
+    <div class="summoner-page__loading-status">
+      <h2>Summoner not found!</h2>
+      <p><a href="/">Return to the search</a>.</p>
+    </div>
+    {{/if}}
+  {{else}}
+  <div class="summoner-page__loading-status">
+    <h2>Loading Summoner</h2>
+    <div class="loading-indicator">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="champion-mastery-cards">
+  <div class="champion-masteries block-group">
+    {{#each championMastery}}
+      <div class="champion-mastery block">
+        {{#with champion}}
+          {{championName}}
+        {{/with}}
+        <div class="mastery-progress">
+          {{#if pointsToMastery}}
+            {{pointsToMastery}} points until mastery!
+          {{/if}}
+          {{#if masteryPoints}}
+            {{masteryPoints}} mastery points earned!
+          {{/if}}
+          <div class="progress-bar">
+            <div class="progress-bar__markers">
+              {{#each levels}}
+              <div class="marker" style="width: {{this}}%;">
+              </div>
+              {{/each}}
+            </div>
+            <div class="progress-bar__progress" style="width: {{relativeMastery}}%"></div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>
