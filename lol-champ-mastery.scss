@@ -506,7 +506,7 @@ html {
 }
 
 body {
-  background: url("img/ziggs_urf_comp.jpg") no-repeat fixed;
+  background: url("img/ziggs_urf_comp.jpg") no-repeat center center fixed;
   background-size: cover;
   color: white;
 
@@ -523,7 +523,12 @@ body {
   }
 
   &.summoner-page {
-    background: url("http://eune.leagueoflegends.com/sites/default/files/upload/environmentart-sru-04_1920.jpg") no-repeat fixed;
+    background: url("http://eune.leagueoflegends.com/sites/default/files/upload/environmentart-sru-04_1920.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+  &.secretsgg-page {
+    background: url('img/Shurima_capital.jpg') no-repeat center center fixed;
+    background-size: cover;
   }
 
   //shim
@@ -923,6 +928,17 @@ a {
   text-align: center;
 }
 
+.rbd-label {
+  h2 {
+    font-family: 'Vollkorn', serif;
+    font-weight: 700;
+  }
+  .subheading {
+    font-size: 1rem;
+    font-family: 'futura-pt', sans-serif;
+  }
+}
+
 .at-a-glance {
   width: 33%;
   height: 100%;
@@ -937,6 +953,8 @@ a {
   z-index: 2;
   & + .toggle-at-a-glance {
     position: absolute;
+    padding: 0 1em;
+    cursor: pointer;
     top: 1em;
     right: 0;
     transition: right 250ms 150ms;
@@ -1063,6 +1081,7 @@ a {
 }
 //hack overwriting stroke width
 .ct-slice-donut {
+  cursor: pointer;
   stroke-width: 100px !important;
   transition: stroke-width 150ms;
 

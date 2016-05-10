@@ -46,6 +46,7 @@ if Meteor.isClient
   Template.summonerSummary.onCreated ->
     @subscribe('allChampions')
   Template.summonerSummary.onRendered ->
+    $('body').removeClass()
     $('body').addClass('summoner-page')
 
     @autorun =>
@@ -67,6 +68,14 @@ if Meteor.isClient
       summoner = Summoners.findOne({riotId: summonerId, server: summonerServer})
       return summoner
     # get mastery breakdown
+    championMasteryPoints: ->
+      champion = Session.get 'labelContext'
+      pts = 0
+      @latestChampionMastery.forEach (el) ->
+        if Champions.findOne({championId: el.championId}).championName is champion
+          pts = el.championPoints
+      pts = pts.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      return pts
     championsMastered: ->
       count = 0
       @latestChampionMastery.forEach (el) ->
@@ -362,6 +371,7 @@ if Meteor.isClient
           ), 600
     'click [data-scope="champions"] .ct-slice-donut': (e) ->
       champion = $(e.currentTarget).attr('ct:meta').replace('&#039;', "'")
+      Session.set 'labelContext', champion
       summonerId = Number(FlowRouter.getParam('riotId'))
       Meteor.call 'updateBreakdown', ['toChampion', champion, summonerId], (err, res) ->
         if err
@@ -457,6 +467,7 @@ if Meteor.isClient
           ), 600
 
   Template.homepage2.onRendered ->
+    $('body').removeClass()
     $('body').addClass('admin-page')
   Template.homepage2.helpers
     counter: ->
