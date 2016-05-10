@@ -71,6 +71,7 @@ if Meteor.isServer
           console.log 'done pruning matches'
           return 'done pruning matches'
     findSummoner: (args) ->
+      console.log args
       name = args[0]
       server = args[1]
       summonerName = keyify(name)
@@ -78,7 +79,7 @@ if Meteor.isServer
 
       # if summoner exists, retutrn the id and link to the page
       if summoner
-        return summoner.riotId
+        return [summoner.riotId, summoner.server]
       # otherwise call the riot api and create the summoner
       else
         #get core summoner
