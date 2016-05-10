@@ -12,10 +12,60 @@
           <p>{{#if championFit}}Unsurprisingly{{else}}However{{/if}}, the most points came from playing <strong>{{mostPlayedChampion}}</strong>, a champion classified under {{#each mostMasteredRoles}}<span class="champion__tag"><strong>{{this}}</strong></span>{{/each}}. So far, <strong>{{riotName}}</strong> has earned <strong>{{maxMasteryHumanLegible}} points</strong> by playing <strong>{{mostPlayedChampion}}</strong>.</p>
           {{/if}}
           {{#if scopeIsChampions}}
-          <p>information about your role here</p>
+          <div class="champion-masteries block-group">
+            {{#each championMastery}}
+              <div class="champion-mastery block">
+                {{#with champion}}
+                  {{championName}}
+                {{/with}}
+                <div class="mastery-progress">
+                  {{#if pointsToMastery}}
+                    {{pointsToMastery}} points until mastery!
+                  {{/if}}
+                  {{#if masteryPoints}}
+                    {{masteryPoints}} mastery points earned!
+                  {{/if}}
+                  <div class="progress-bar">
+                    <div class="progress-bar__markers">
+                      {{#each levels}}
+                      <div class="marker" style="width: {{this}}%;">
+                      </div>
+                      {{/each}}
+                    </div>
+                    <div class="progress-bar__progress" style="width: {{relativeMastery}}%"></div>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
           {{/if}}
           {{#if scopeIsChampion}}
-          <p>information about your champion here</p>
+          <div class="champion-masteries block-group">
+            {{#each championMastery}}
+              <div class="champion-mastery block">
+                {{#with champion}}
+                  {{championName}}
+                {{/with}}
+                <div class="mastery-progress">
+                  {{#if pointsToMastery}}
+                    {{pointsToMastery}} points until mastery!
+                  {{/if}}
+                  {{#if masteryPoints}}
+                    {{masteryPoints}} mastery points earned!
+                  {{/if}}
+                  <div class="progress-bar">
+                    <div class="progress-bar__markers">
+                      {{#each levels}}
+                      <div class="marker" style="width: {{this}}%;">
+                      </div>
+                      {{/each}}
+                    </div>
+                    <div class="progress-bar__progress" style="width: {{relativeMastery}}%"></div>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
           {{/if}}
           <footer><strong>League of Feed</strong> isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</footer>
         </div>
@@ -34,7 +84,7 @@
                 {{/if}}
                 {{#if scopeIsChampions}}
                 <h2>
-                  1,337<br><span class="subheading">role mastery points</span>
+                  1,337<br><span class="subheading">{{currentRoleBreakdown}} mastery points</span>
                 </h2>
                 {{/if}}
                 {{#if scopeIsChampion}}

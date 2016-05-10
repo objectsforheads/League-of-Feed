@@ -68,6 +68,9 @@ if Meteor.isClient
       summoner = Summoners.findOne({riotId: summonerId, server: summonerServer})
       return summoner
     # get mastery breakdown
+    roleMasteryPoints: ->
+      pts = 0
+
     championMasteryPoints: ->
       champion = Session.get 'labelContext'
       pts = 0
