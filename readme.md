@@ -8,7 +8,7 @@ League of Feed was originally intended to fulfill the following purposes:
 It currently does none of these things, but we're keeping the name as a fond homage to the philosophy of an eternally salty Silver I player. True to form, League of Feed too strives to <strike>make it to the promised land of Gold V</strike> fulfill its original goals, if only their <strike>team</strike> developer wasn't so hard to carry.
 
 # Live
-League of Feed currently lives [here], for as long as we can keep the servers going. Otherwise, the source code is available here on github, which you can pull and then use to hoard your own databases.
+League of Feed currently lives [here](http://alpha.leagueoffeed.com/), for as long as we can keep the servers going. Otherwise, the source code is available here on github, which you can pull and then use to hoard your own databases.
 
 ## Demoing
 League of Feed features two main actions:
