@@ -4,7 +4,7 @@
       {{#with summoner}}
         <div class="summoner-brief">
           <h1>{{riotName}}</h1>
-          <p> mastered <strong>{{championsMastered}}</strong> champions | mastering <strong>{{championsInProgressMastery}}</strong> champions | hasn't played <strong>{{championsNoPoints}}</strong> champions</p>
+          <p> mastered <strong>{{championsMastered}}</strong> champions | is mastering <strong>{{championsInProgressMastery}}</strong> champions | hasn't played <strong>{{championsNoPoints}}</strong> champions</p>
         </div>
         <div class="at-a-glance active">
           {{#if scopeIsRoles}}
@@ -17,7 +17,7 @@
           {{#if scopeIsChampion}}
           <p>information about your champion here</p>
           {{/if}}
-          <p>Based on your mastery point breakdown, we recommend trying out {{recommendedChampion}}.</p>
+          <footer><strong>League of Feed</strong> isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</footer>
         </div>
         <div class="toggle-at-a-glance">toggle</div>
         <div class="block-group">

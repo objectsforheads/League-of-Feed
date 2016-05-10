@@ -791,6 +791,10 @@ a {
     font-family: 'Vollkorn', serif;
     font-weight: 700;
   }
+  // HACK display the footer in the sidebar on summoner pages
+  main + footer {
+    display: none;
+  }
 }
 
 .summoner-brief {
@@ -1062,7 +1066,7 @@ a {
   }
 }
 
-main + footer {
+footer {
   position: absolute;
   bottom: 0;
   left: 0;
